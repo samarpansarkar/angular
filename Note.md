@@ -592,3 +592,411 @@ export class AppComponent {
 <!-- Prefer -->
 <p>{{ cachedValue }}</p>
 ```
+
+
+# Angular Signals
+
+## What are Signals?
+
+**Signals** are Angular's new reactive state management feature introduced in **Angular 16**. They provide a simple and efficient way to manage and track state changes in an Angular application without relying heavily on RxJS.
+
+A **Signal** is a wrapper around a value that notifies Angular whenever the value changes, allowing the UI to update automatically.
+
+---
+
+# Why Signals?
+
+Before Signals, Angular primarily relied on:
+
+- Zone.js
+- Change Detection
+- RxJS Observables
+
+These approaches worked well but often resulted in:
+
+- Unnecessary change detection cycles
+- More boilerplate code
+- Complex state management
+- Performance overhead in large applications
+
+Signals solve these issues by making Angular's reactivity **fine-grained**, meaning only the parts of the UI that depend on a changed signal are updated.
+
+---
+
+# Benefits of Signals
+
+- Better Performance
+- Less Boilerplate Code
+- Fine-Grained Reactivity
+- Easy State Management
+- Improved Readability
+- No Need for Manual Change Detection
+- Less Dependency on RxJS for Local State
+
+---
+
+# Creating a Signal
+
+Import the `signal` function.
+
+```typescript
+import { signal } from '@angular/core';
+```
+
+Create a signal:
+
+```typescript
+count = signal(0);
+```
+
+Here:
+
+- `count` is a Signal.
+- Initial value is `0`.
+
+---
+
+# Reading a Signal
+
+To access the value of a signal, call it like a function.
+
+```typescript
+count();
+```
+
+Example:
+
+```typescript
+console.log(count());
+```
+
+Output:
+
+```
+0
+```
+
+---
+
+# Updating a Signal
+
+## Method 1: set()
+
+Replace the current value.
+
+```typescript
+count.set(10);
+```
+
+Output:
+
+```
+10
+```
+
+---
+
+## Method 2: update()
+
+Update the value using the previous value.
+
+```typescript
+count.update(value => value + 1);
+```
+
+Example:
+
+```typescript
+count.update(value => value + 5);
+```
+
+If current value is:
+
+```
+10
+```
+
+Output:
+
+```
+15
+```
+
+---
+
+# Example
+
+## component.ts
+
+```typescript
+import { Component, signal } from '@angular/core';
+
+@Component({
+  selector: 'app-counter',
+  templateUrl: './counter.component.html'
+})
+export class CounterComponent {
+
+  count = signal(0);
+
+  increment() {
+    this.count.update(value => value + 1);
+  }
+
+  decrement() {
+    this.count.update(value => value - 1);
+  }
+
+  reset() {
+    this.count.set(0);
+  }
+}
+```
+
+---
+
+## component.html
+
+```html
+<h2>Counter: {{ count() }}</h2>
+
+<button (click)="increment()">Increment</button>
+
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset</button>
+```
+
+---
+
+# Computed Signals
+
+A computed signal derives its value from one or more other signals.
+
+Import:
+
+```typescript
+import { computed } from '@angular/core';
+```
+
+Example:
+
+```typescript
+count = signal(5);
+
+doubleCount = computed(() => count() * 2);
+```
+
+Reading:
+
+```typescript
+doubleCount();
+```
+
+Output:
+
+```
+10
+```
+
+When:
+
+```typescript
+count.set(8);
+```
+
+Output:
+
+```
+doubleCount() = 16
+```
+
+No manual updates are required.
+
+---
+
+# Example
+
+```typescript
+price = signal(500);
+quantity = signal(3);
+
+total = computed(() => price() * quantity());
+```
+
+Result:
+
+```
+500 × 3 = 1500
+```
+
+Changing:
+
+```typescript
+quantity.set(5);
+```
+
+Automatically updates:
+
+```
+2500
+```
+
+---
+
+# Effects
+
+Effects run automatically whenever the signals they depend on change.
+
+Import:
+
+```typescript
+import { effect } from '@angular/core';
+```
+
+Example:
+
+```typescript
+count = signal(0);
+
+constructor() {
+  effect(() => {
+    console.log("Current Count:", count());
+  });
+}
+```
+
+Output:
+
+```
+Current Count: 0
+```
+
+After:
+
+```typescript
+count.set(5);
+```
+
+Output:
+
+```
+Current Count: 5
+```
+
+---
+
+# Signal Methods
+
+| Method | Description |
+|----------|-------------|
+| `signal()` | Creates a signal |
+| `()` | Reads the signal value |
+| `set()` | Replaces the current value |
+| `update()` | Updates value using previous value |
+| `computed()` | Creates derived state |
+| `effect()` | Runs side effects when signals change |
+
+---
+
+# Signals vs Variables
+
+## Normal Variable
+
+```typescript
+count = 0;
+
+count++;
+```
+
+Angular may not know exactly what changed and can trigger broader change detection.
+
+---
+
+## Signal
+
+```typescript
+count = signal(0);
+
+count.update(v => v + 1);
+```
+
+Angular knows exactly which UI depends on `count` and updates only those parts.
+
+---
+
+# Signals vs Observables
+
+| Signals | Observables |
+|----------|-------------|
+| Hold current value | Represent a stream of values |
+| Synchronous | Asynchronous by design |
+| Easy to read | Require subscription |
+| No unsubscribe needed | Must unsubscribe (unless handled automatically) |
+| Great for component state | Great for HTTP, events, WebSockets |
+| Simple API | Rich RxJS operators |
+
+---
+
+# When to Use Signals
+
+Use Signals for:
+
+- Component state
+- Form state
+- UI state
+- Counters
+- Theme switching
+- Toggle buttons
+- Local data
+- Derived values
+
+---
+
+# When to Use RxJS
+
+Use RxJS for:
+
+- HTTP Requests
+- WebSockets
+- Timers
+- Event streams
+- Route parameters
+- Complex asynchronous operations
+- Combining multiple async streams
+
+---
+
+# Best Practices
+
+- Use **Signals** for local component state.
+- Use **Computed Signals** instead of manually recalculating values.
+- Use **Effects** only for side effects (logging, local storage, API calls).
+- Avoid mutating objects or arrays directly inside a signal. Instead, create a new value.
+
+Example:
+
+❌ Bad
+
+```typescript
+this.users().push(newUser);
+```
+
+✅ Good
+
+```typescript
+this.users.update(users => [...users, newUser]);
+```
+
+---
+
+# Summary
+
+- Signals are Angular's modern reactive state management solution.
+- They provide fine-grained reactivity and better performance.
+- `signal()` creates state.
+- `set()` replaces the value.
+- `update()` modifies the value based on the previous state.
+- `computed()` creates derived values.
+- `effect()` performs side effects when signals change.
+- Signals reduce the need for RxJS in local state management while improving readability and maintainability.
