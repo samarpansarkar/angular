@@ -16,6 +16,14 @@ export class DataBindingComponent implements OnInit {
     alert(message);
   }
 
+  changeCourseName(){
+    if (this.courseName=="Angular 13") {
+      this.courseName="Angular 21"
+    }else{
+      this.courseName="Angular 13"
+    }
+  }
+
   constructor() { }
 
   ngOnInit(): void {
