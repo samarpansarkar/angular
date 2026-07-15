@@ -8,7 +8,7 @@
 
 ### Part I – Getting Started
 
-1. [Introduction](./01-Introduction)
+1. [Introduction](./angular-complete-guide/01-Introduction)
 2. [Installation & Angular CLI](./02-Installation)
 3. [Project Structure](./03-Project-Structure)
 
