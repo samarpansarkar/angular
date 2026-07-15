@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 
 @Component({
   selector: 'app-signals',
@@ -27,5 +27,14 @@ export class Signals {
 
   decrement (){
     this.count.update(val=>val-1);
+  }
+
+  counter = signal(0);
+  
+  constructor() {
+    effect(() => {
+      console.log("Current Count:", this.counter());
+    });
+    this.counter.set(5)
   }
 }
