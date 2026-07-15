@@ -3,3 +3,26 @@
 <ul>
     <li *ngFor="let course of courses">{{course}}</li>
 </ul>
+
+<select name="citys" id="">
+    <option *ngFor="let city of citys">{{city}}</option>
+</select>
+
+<table>
+    <thead>
+        <tr>
+            <th>student ID</th>
+            <th>Student Name</th>
+            <th>Address</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of users">
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.address}}</td>
+            <td>{{student.isActive}}</td>
+        </tr>
+    </tbody>
+</table>
