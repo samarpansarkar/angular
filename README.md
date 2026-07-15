@@ -1000,3 +1000,537 @@ this.users.update(users => [...users, newUser]);
 - `computed()` creates derived values.
 - `effect()` performs side effects when signals change.
 - Signals reduce the need for RxJS in local state management while improving readability and maintainability.
+
+
+# Angular Directives
+
+## What are Directives?
+
+**Directives** are special classes in Angular that allow you to **change the appearance, behavior, or structure of DOM elements**.
+
+They are identified by the `@Directive` or `@Component` decorator.
+
+> **Definition:** A directive tells Angular **how to modify an HTML element or the DOM**.
+
+---
+
+# Why Do We Need Directives?
+
+Without directives, HTML is static.
+
+Directives allow us to:
+
+- Show or hide elements
+- Repeat elements
+- Change styles dynamically
+- Respond to user interactions
+- Create reusable behaviors
+- Build dynamic user interfaces
+
+---
+
+# Types of Directives
+
+Angular provides **three types of directives**:
+
+1. **Component Directives**
+2. **Structural Directives**
+3. **Attribute Directives**
+
+```
+Directives
+│
+├── Component Directives
+├── Structural Directives
+└── Attribute Directives
+```
+
+---
+
+# 1. Component Directive
+
+A **Component** is actually a special type of directive.
+
+Unlike normal directives, a component has:
+
+- HTML Template
+- CSS Styles
+- TypeScript Logic
+
+Every Angular application is built using components.
+
+---
+
+## Example
+
+### app.component.ts
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <h1>Hello Angular!</h1>
+    <p>Welcome to Components.</p>
+  `
+})
+export class AppComponent {}
+```
+
+---
+
+### HTML
+
+```html
+<app-root></app-root>
+```
+
+---
+
+### Output
+
+```
+Hello Angular!
+
+Welcome to Components.
+```
+
+---
+
+## Important Points
+
+- Created using `@Component`
+- Has its own template
+- Has its own styles
+- Has business logic
+- Most commonly used directive in Angular
+
+---
+
+# 2. Structural Directives
+
+Structural directives **change the structure of the DOM**.
+
+They can:
+
+- Add elements
+- Remove elements
+- Repeat elements
+
+Structural directives always begin with **`*`**.
+
+Examples:
+
+- `*ngIf`
+- `*ngFor`
+- `*ngSwitch`
+
+---
+
+## Why `*`?
+
+The `*` is shorthand syntax.
+
+Angular converts:
+
+```html
+<div *ngIf="show">
+    Hello
+</div>
+```
+
+into
+
+```html
+<ng-template [ngIf]="show">
+    <div>Hello</div>
+</ng-template>
+```
+
+The `*` tells Angular to create an internal `<ng-template>`.
+
+---
+
+# A. `*ngIf`
+
+Shows or removes an element based on a condition.
+
+---
+
+### TypeScript
+
+```typescript
+showMessage = true;
+```
+
+---
+
+### HTML
+
+```html
+<p *ngIf="showMessage">
+  Welcome to Angular!
+</p>
+```
+
+---
+
+### Output
+
+If
+
+```typescript
+showMessage = true;
+```
+
+```
+Welcome to Angular!
+```
+
+If
+
+```typescript
+showMessage = false;
+```
+
+Nothing is displayed because the element is removed from the DOM.
+
+---
+
+# B. `*ngFor`
+
+Repeats an element for every item in a collection.
+
+---
+
+### TypeScript
+
+```typescript
+courses = [
+  'Angular',
+  'React',
+  'Vue',
+  'Node.js'
+];
+```
+
+---
+
+### HTML
+
+```html
+<ul>
+  <li *ngFor="let course of courses">
+    {{ course }}
+  </li>
+</ul>
+```
+
+---
+
+### Output
+
+```
+• Angular
+• React
+• Vue
+• Node.js
+```
+
+---
+
+# C. `*ngSwitch`
+
+Displays different content based on a matching value.
+
+---
+
+### TypeScript
+
+```typescript
+status = 'success';
+```
+
+---
+
+### HTML
+
+```html
+<div [ngSwitch]="status">
+
+  <p *ngSwitchCase="'success'">
+    Operation Successful
+  </p>
+
+  <p *ngSwitchCase="'error'">
+    Something went wrong
+  </p>
+
+  <p *ngSwitchDefault>
+    Unknown Status
+  </p>
+
+</div>
+```
+
+---
+
+### Output
+
+```
+Operation Successful
+```
+
+---
+
+## Important Notes about Structural Directives
+
+- Begin with `*`
+- Modify the DOM structure
+- Can add or remove elements
+- Can repeat elements
+- Only **one structural directive** can be applied to an element.
+
+❌ Wrong
+
+```html
+<div *ngIf="true" *ngFor="let item of items">
+</div>
+```
+
+Use `<ng-container>` instead.
+
+```html
+<ng-container *ngIf="true">
+  <div *ngFor="let item of items">
+    {{ item }}
+  </div>
+</ng-container>
+```
+
+---
+
+# 3. Attribute Directives
+
+Attribute directives **change the appearance or behavior** of an existing element.
+
+Unlike structural directives, they **do not create or remove elements**.
+
+Examples:
+
+- `ngClass`
+- `ngStyle`
+- `ngModel`
+
+---
+
+# A. `ngClass`
+
+Adds or removes CSS classes dynamically.
+
+---
+
+### TypeScript
+
+```typescript
+isActive = true;
+```
+
+---
+
+### HTML
+
+```html
+<p [ngClass]="{ active: isActive }">
+  Angular Tutorial
+</p>
+```
+
+---
+
+### CSS
+
+```css
+.active{
+    color: green;
+    font-weight: bold;
+}
+```
+
+---
+
+### Output
+
+```
+Angular Tutorial
+```
+
+(Text appears green and bold.)
+
+---
+
+# B. `ngStyle`
+
+Applies inline styles dynamically.
+
+---
+
+### TypeScript
+
+```typescript
+fontColor = 'red';
+```
+
+---
+
+### HTML
+
+```html
+<p [ngStyle]="{'color': fontColor}">
+    Hello Angular
+</p>
+```
+
+---
+
+### Output
+
+Text color becomes:
+
+```
+Red
+```
+
+---
+
+# C. `ngModel`
+
+Provides **two-way data binding** between the UI and the component.
+
+Requires:
+
+```typescript
+FormsModule
+```
+
+---
+
+### TypeScript
+
+```typescript
+courseName = '';
+```
+
+---
+
+### HTML
+
+```html
+<input
+    type="text"
+    [(ngModel)]="courseName">
+
+<p>{{ courseName }}</p>
+```
+
+---
+
+### Output
+
+Typing:
+
+```
+Angular
+```
+
+Displays:
+
+```
+Angular
+```
+
+automatically.
+
+---
+
+## Important Notes about Attribute Directives
+
+- Do not remove elements
+- Do not create elements
+- Modify appearance or behavior
+- No `*` symbol is used
+- Can be applied together on the same element
+
+Example
+
+```html
+<p
+    [ngClass]="{active:true}"
+    [ngStyle]="{'color':'blue'}">
+    Angular
+</p>
+```
+
+---
+
+# Built-in Directives
+
+Angular provides many built-in directives.
+
+| Directive | Type | Purpose |
+|------------|------|---------|
+| `*ngIf` | Structural | Show/Hide elements |
+| `*ngFor` | Structural | Loop through collections |
+| `*ngSwitch` | Structural | Conditional rendering |
+| `ngClass` | Attribute | Add or remove CSS classes |
+| `ngStyle` | Attribute | Apply inline styles |
+| `ngModel` | Attribute | Two-way data binding |
+
+---
+
+# Structural vs Attribute Directives
+
+| Structural Directive | Attribute Directive |
+|----------------------|--------------------|
+| Changes DOM structure | Changes appearance or behavior |
+| Can add/remove elements | Cannot add/remove elements |
+| Uses `*` | Does not use `*` |
+| Example: `*ngIf` | Example: `ngClass` |
+
+---
+
+# Component vs Directive
+
+| Component | Directive |
+|-----------|-----------|
+| Has HTML Template | No Template |
+| Has CSS | No CSS |
+| Has TypeScript Logic | Has TypeScript Logic |
+| Creates a View | Modifies Existing Elements |
+
+---
+
+# Best Practices
+
+- Use **Components** to create reusable UI sections.
+- Use **`*ngIf`** to conditionally display elements.
+- Use **`*ngFor`** to render lists efficiently.
+- Use **`ngSwitch`** when there are multiple conditions instead of many `*ngIf` statements.
+- Use **`ngClass`** instead of manually manipulating classes.
+- Use **`ngStyle`** for dynamic inline styles.
+- Use **`ngModel`** only with template-driven forms and remember to import `FormsModule`.
+- Avoid applying more than one structural directive (`*`) to the same element.
+
+---
+
+# Summary
+
+- **Directives** are instructions that tell Angular how to manipulate the DOM.
+- Angular has **three types of directives**:
+  - **Component Directives** – Create reusable UI with a template, styles, and logic.
+  - **Structural Directives** – Change the DOM structure by adding, removing, or repeating elements (`*ngIf`, `*ngFor`, `*ngSwitch`).
+  - **Attribute Directives** – Change the appearance or behavior of existing elements without modifying the DOM structure (`ngClass`, `ngStyle`, `ngModel`).
+- Structural directives use the `*` syntax and internally work with `<ng-template>`.
+- Attribute directives enhance existing elements by applying styles, classes, or two-way data binding.
+- Choosing the appropriate directive keeps Angular applications clean, maintainable, and performant.
