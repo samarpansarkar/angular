@@ -1,0 +1,11 @@
+<p>signals works!</p>
+
+<p><span>My Phone numer: </span>{{phoneNumber()}}</p>
+<button (click)="setNumber()">Change Phone Number</button>
+<button (click)="resetNumber()">Reset the phone number</button>
+
+<p><span>Counter: </span>{{count()}}</p>
+<button (click)="increament()">Increment</button>
+<button (click)="decrement()" *ngIf="count() > 0">
+  Decrement
+</button>
