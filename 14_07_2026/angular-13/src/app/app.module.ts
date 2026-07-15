@@ -7,13 +7,15 @@ import { DataBindingComponent } from './components/data-binding/data-binding.com
 import { FormsModule } from '@angular/forms';
 import { TowWayDataBindingComponent } from './components/tow-way-data-binding/tow-way-data-binding.component';
 import { NgIfDirectiveComponent } from './components/Directives/StructuralDirectives/ng-if-directive/ng-if-directive.component';
+import { NgForDirectiveComponent } from './components/Directives/StructuralDirectives/ng-for-directive/ng-for-directive.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataBindingComponent,
     TowWayDataBindingComponent,
-    NgIfDirectiveComponent
+    NgIfDirectiveComponent,
+    NgForDirectiveComponent
   ],
   imports: [
     BrowserModule,
