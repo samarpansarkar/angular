@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { DataBindingComponent } from './components/data-binding/data-binding.component';
 import { FormsModule } from '@angular/forms';
 import { TowWayDataBindingComponent } from './components/tow-way-data-binding/tow-way-data-binding.component';
+import { NgIfDirectiveComponent } from './components/Directives/StructuralDirectives/ng-if-directive/ng-if-directive.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataBindingComponent,
-    TowWayDataBindingComponent
+    TowWayDataBindingComponent,
+    NgIfDirectiveComponent
   ],
   imports: [
     BrowserModule,
