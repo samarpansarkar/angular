@@ -9,58 +9,58 @@
 ### Part I – Getting Started
 
 1. [Introduction](./angular-complete-guide/01-Introduction)
-2. [Installation & Angular CLI](./02-Installation)
-3. [Project Structure](./03-Project-Structure)
+2. [Installation & Angular CLI](./angular-complete-guide/02-Installation)
+3. [Project Structure](./angular-complete-guide/03-Project-Structure)
 
 ---
 
 ### Part II – Components
 
-4. [Components](./04-Components)
-5. [Data Binding](./05-Data-Binding)
-6. [Directives](./06-Directives)
-7. [Pipes](./07-Pipes)
+4. [Components](./angular-complete-guide/04-Components)
+5. [Data Binding](./angular-complete-guide/05-Data-Binding)
+6. [Directives](./angular-complete-guide/06-Directives)
+7. [Pipes](./angular-complete-guide/07-Pipes)
 
 ---
 
 ### Part III – Navigation
 
-8. [Routing](./08-Routing)
+8. [Routing](./angular-complete-guide/08-Routing)
 
 ---
 
 ### Part IV – Forms & Services
 
-9. [Forms](./09-Forms)
-10. [Services](./10-Services)
-11. [Dependency Injection](./11-Dependency-Injection)
-12. [HTTP Client](./12-HTTP)
+9. [Forms](./angular-complete-guide/09-Forms)
+10. [Services](./angular-complete-guide/10-Services)
+11. [Dependency Injection](./angular-complete-guide/11-Dependency-Injection)
+12. [HTTP Client](./angular-complete-guide/12-HTTP)
 
 ---
 
 ### Part V – Modern Angular
 
-13. [Signals](./13-Signals)
-14. [Lifecycle Hooks](./14-Lifecycle-Hooks)
-15. [RxJS](./15-RxJS)
-16. [State Management](./16-State-Management)
+13. [Signals](./angular-complete-guide/13-Signals)
+14. [Lifecycle Hooks](./angular-complete-guide/14-Lifecycle-Hooks)
+15. [RxJS](./angular-complete-guide/15-RxJS)
+16. [State Management](./angular-complete-guide/16-State-Management)
 
 ---
 
 ### Part VI – Production
 
-17. [Performance](./17-Performance)
-18. [Security](./18-Security)
-19. [Testing](./19-Testing)
-20. [Deployment](./20-Deployment)
+17. [Performance](./angular-complete-guide/17-Performance)
+18. [Security](./angular-complete-guide/18-Security)
+19. [Testing](./angular-complete-guide/19-Testing)
+20. [Deployment](./angular-complete-guide/20-Deployment)
 
 ---
 
 ### Part VII – Extras
 
-21. [Best Practices](./21-Best-Practices)
-22. [Interview Questions](./22-Interview-Questions)
-23. [Cheat Sheets](./23-Cheat-Sheets)
+21. [Best Practices](./angular-complete-guide/21-Best-Practices)
+22. [Interview Questions](./angular-complete-guide/22-Interview-Questions)
+23. [Cheat Sheets](./angular-complete-guide/23-Cheat-Sheets)
 
 ---
 
