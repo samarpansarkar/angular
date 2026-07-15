@@ -1,7 +1,12 @@
-<div class="border" [ngClass]="divClass">
-  <p>ng-class-directive works!</p>
-
-  <button (click)="changeStyle()">
-    Change the style
-  </button>
+<div class="border rounded-lg" [ngClass]="divClass">
+  
+  <p class="text-center pt-10">ng-class-directive works!</p>
+  <div class="p-10 flex gap-5 items-center justify-center">
+    <button class="border rounded-md p-2 bg-green-100 text-black" (click)="changeStyleToGreen()">
+      Change the color to Green
+    </button>
+    <button class="border rounded-md p-2 bg-red-100 text-black" (click)="changeStyleToRed()">
+      Change the color to Red
+    </button>
+  </div>
 </div>

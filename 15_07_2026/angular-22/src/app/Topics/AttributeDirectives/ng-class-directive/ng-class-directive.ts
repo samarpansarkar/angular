@@ -11,8 +11,11 @@ import { Component } from '@angular/core';
 export class NgClassDirective {
   divClass:string=''
 
-  changeStyle(){
-    this.divClass="bg-green-300"
+  changeStyleToGreen(){
+    this.divClass="bg-green-800 text-white"
+  }
 
+  changeStyleToRed(){
+    this.divClass='bg-red-800 text-black'
   }
 }
