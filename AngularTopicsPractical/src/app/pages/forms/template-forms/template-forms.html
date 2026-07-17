@@ -1,0 +1,213 @@
+<div class="max-w-3xl mx-auto mt-10 rounded-lg p-8 bg-slate-100 shadow-lg">
+  <h2 class="mb-6 text-3xl font-bold text-center">
+    Student Registration Form
+  </h2>
+
+  <form #studentForm="ngForm">
+
+    <!-- First Name -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">First Name</label>
+      <input
+        type="text"
+        name="firstName"
+        ngModel
+        required
+        class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500"
+        placeholder="Enter first name">
+    </div>
+
+    <!-- Last Name -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Last Name</label>
+      <input
+        type="text"
+        name="lastName"
+        ngModel
+        required
+        class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500"
+        placeholder="Enter last name">
+    </div>
+
+    <!-- Email -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Email</label>
+      <input
+        type="email"
+        name="email"
+        ngModel
+        class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500"
+        placeholder="Enter email">
+    </div>
+
+    <!-- Password -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Password</label>
+      <input
+        type="password"
+        name="password"
+        ngModel
+        class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500"
+        placeholder="Enter password">
+    </div>
+
+    <!-- Phone -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Phone Number</label>
+      <input
+        type="tel"
+        name="phone"
+        ngModel
+        class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500"
+        placeholder="Enter phone number">
+    </div>
+
+    <!-- Age -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Age</label>
+      <input
+        type="number"
+        name="age"
+        ngModel
+        class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500">
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Date of Birth</label>
+      <input
+        type="date"
+        name="dob"
+        ngModel
+        class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500">
+    </div>
+
+    <!-- Gender -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Gender</label>
+
+      <div class="flex gap-6">
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="Male"
+            ngModel>
+          Male
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="Female"
+            ngModel>
+          Female
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            name="gender"
+            value="Other"
+            ngModel>
+          Other
+        </label>
+      </div>
+    </div>
+
+    <!-- Department -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Department</label>
+
+      <select
+        name="department"
+        ngModel
+        class="w-full rounded-md border px-4 py-2">
+        <option value="">Select Department</option>
+        <option>CSE</option>
+        <option>ECE</option>
+        <option>IT</option>
+        <option>Mechanical</option>
+        <option>Civil</option>
+      </select>
+    </div>
+
+    <!-- Skills -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Skills</label>
+
+      <div class="grid grid-cols-2 gap-2">
+        <label>
+          <input
+            type="checkbox"
+            name="html"
+            ngModel>
+          HTML
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="css"
+            ngModel>
+          CSS
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="javascript"
+            ngModel>
+          JavaScript
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="angular"
+            ngModel>
+          Angular
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="react"
+            ngModel>
+          React
+        </label>
+
+        <label>
+          <input
+            type="checkbox"
+            name="node"
+            ngModel>
+          Node.js
+        </label>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="mb-4">
+      <label class="mb-2 block font-medium">Address</label>
+
+      <textarea
+        name="address"
+        ngModel
+        rows="4"
+        class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500"
+        placeholder="Enter your address"></textarea>
+    </div>
+
+    <!-- Submit -->
+    <div class="text-center">
+      <button
+        type="submit"
+        class="rounded-md bg-blue-600 px-8 py-3 text-white transition hover:bg-blue-700">
+        Register
+      </button>
+    </div>
+
+  </form>
+</div>
