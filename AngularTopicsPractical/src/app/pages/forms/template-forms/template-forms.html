@@ -9,10 +9,20 @@
       <input
         type="text"
         name="name"
+        #uName="ngModel"
         [(ngModel)]="studentObj.name"
         required
+        minlength="3"
         class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500"
         placeholder="Enter your name">
+        <div>
+            @if ((uName.touched || uName.dirty) && uName.errors?.['required']) {
+                <span>User name required!!!</span>
+            }
+            @else if ((uName.touched || uName.dirty)  && uName.errors?.['minlength']) {
+                <span>Minimum 3 char required!!</span>
+            }
+        </div>
     </div>
 
     <div class="mb-4">
@@ -20,9 +30,19 @@
       <input
         type="email"
         name="email"
+        #uEmail="ngModel"
         [(ngModel)]="studentObj.email"
+        required
+        pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
         class="w-full rounded-md border px-4 py-2 outline-none focus:border-blue-500"
         placeholder="Enter email">
+        <div>
+            @if ((uName.touched || uName.dirty) && uEmail.errors?.['required']) {
+                <span>Email is required!!!</span>
+            } @else if ((uName.touched || uName.dirty) && uEmail.errors?.['pattern']) {
+                <span>Invalid email!!!</span>
+            }
+        </div>
     </div>
 
     <div class="mb-4">
@@ -102,6 +122,11 @@
 
     <!-- Submit -->
     <div class="text-center">
+        <button
+        (click)="resetForm()"
+        class="rounded-md bg-blue-600 px-8 py-3 text-white transition hover:bg-blue-700">
+        Reset Form
+      </button>
       <button
         type="submit"
         [disabled]="studentForm.invalid"
@@ -111,4 +136,10 @@
     </div>
 
   </form>
+
+  <div>
+    <p>
+        {{studentObj|json}}
+    </p>
+  </div>
 </div>
