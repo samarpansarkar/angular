@@ -1,0 +1,100 @@
+<section class="min-h-screen bg-slate-100 px-6 py-16">
+  <div class="mx-auto max-w-5xl">
+    <div class="mb-12 text-center">
+      <h1 class="text-3xl font-bold text-slate-800">
+        Angular Control Flow
+      </h1>
+      <p class="mt-2 text-slate-500">
+        Examples of Angular &#64;if and &#64;else control flow
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+
+      <div class="rounded-2xl bg-white p-8 shadow-lg">
+        <div class="mb-6">
+          <h2 class="text-xl font-semibold text-slate-800">
+            &#64;if Control Flow
+          </h2>
+          <p class="mt-1 text-sm text-slate-500">
+            Show or hide an element using a condition.
+          </p>
+        </div>
+
+        <div class="flex min-h-48 items-center justify-center rounded-xl bg-slate-100 p-6">
+          @if (Div1stVisible) {
+          <div class="flex h-32 w-full items-center justify-center rounded-xl bg-blue-500 shadow-md">
+            <p class="font-semibold text-white">
+              If Control Flow
+            </p>
+          </div>
+          } @else {
+          <p class="text-sm text-slate-400">
+            The div is currently hidden
+          </p>
+          }
+        </div>
+
+        <div class="mt-6 flex justify-center">
+          @if (Div1stVisible) {
+          <button
+            class="rounded-lg bg-red-500 px-6 py-2.5 font-medium text-white transition hover:bg-red-600 active:scale-95"
+            (click)="hideDiv1()">
+            Hide Div
+          </button>
+          } @else {
+          <button
+            class="rounded-lg bg-green-500 px-6 py-2.5 font-medium text-white transition hover:bg-green-600 active:scale-95"
+            (click)="showDiv1()">
+            Show Div
+          </button>
+          }
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-white p-8 shadow-lg">
+        <div class="mb-6">
+          <h2 class="text-xl font-semibold text-slate-800">
+            &#64;if / &#64;else Control Flow
+          </h2>
+          <p class="mt-1 text-sm text-slate-500">
+            Switch between two elements based on a condition.
+          </p>
+        </div>
+
+        <div class="flex min-h-48 items-center justify-center rounded-xl bg-slate-100 p-6">
+          @if (Div2ndVisible) {
+          <div class="flex h-32 w-full items-center justify-center rounded-xl bg-blue-500 shadow-md">
+            <p class="font-semibold text-white">
+              If Condition: Div 1
+            </p>
+          </div>
+          } @else {
+          <div class="flex h-32 w-full items-center justify-center rounded-xl bg-orange-500 shadow-md">
+            <p class="font-semibold text-white">
+              Else Condition: Div 2
+            </p>
+          </div>
+          }
+        </div>
+
+        <div class="mt-6 flex justify-center">
+          @if (Div2ndVisible) {
+          <button
+            class="rounded-lg bg-orange-500 px-6 py-2.5 font-medium text-white transition hover:bg-orange-600 active:scale-95"
+            (click)="changeDiv2()">
+            Switch to Div 2
+          </button>
+          } @else {
+          <button
+            class="rounded-lg bg-blue-500 px-6 py-2.5 font-medium text-white transition hover:bg-blue-600 active:scale-95"
+            (click)="showDiv2()">
+            Switch to Div 1
+          </button>
+          }
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

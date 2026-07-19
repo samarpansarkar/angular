@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -8,9 +8,9 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './navbar.css',
 })
 export class Navbar {
-  constructor(private router: Router){}
+  private router = inject(Router);
 
-  navigate(url:string){
+  navigate(url:string):void{
     if(url){
       this.router.navigate([url]);
     }
